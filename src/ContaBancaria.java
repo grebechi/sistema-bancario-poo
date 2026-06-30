@@ -6,7 +6,7 @@ public class ContaBancaria {
 
     public ContaBancaria(){
         saldo = 0;
-        titular = "Sem titular";
+        titular = null;
     }
 
     public ContaBancaria(String nome, double valor){
@@ -14,12 +14,19 @@ public class ContaBancaria {
         titular = nome;
     }
 
-    public void depositar(double valor){
-        saldo += valor;
+    public boolean depositar(double valor){
+    	if(valor < 0) return false;
+    	else {
+            saldo += valor;
+            return true;
+        }
     }
-    public void sacar(double valor){
-        if(valor >= saldo) JOptionPane.showMessageDialog(null, "Saldo insuficiente.");
-        else saldo -= valor;
+    public boolean sacar(double valor){
+        if(valor >= saldo) return false;);
+        else {
+            saldo -= valor;
+    	    return true;
+    	}
     }
 
     public double getSaldo(){
